@@ -12,8 +12,23 @@ var TicTacClient = React.createClass({
     var tiles = this.state.tiles;
     var id = event.target.id;
     console.log(id);
+    // human marks his spot.
+    this.humanMark(id);
+
+    // ai marks spot.
+    this.aiMark(id);
 
     this.setState({ tiles: tiles, turn: this.state.turn = "o" ? "x" : "o" });
+  },
+  humanMark: function(id) {
+    var tiles = this.state.tiles;
+    this.setState({ tiles: tiles[id] = "o" });
+    console.log(tiles);
+  },
+  aiMark: function (id) {
+    var tiles = this.state.tiles;
+    if (tiles[0] === "o")
+      this.setState({ tiles: tiles[4] = "x" });
   },
   render: function() {
     var handler = this.handleClick;
@@ -24,8 +39,7 @@ var TicTacClient = React.createClass({
         })}
       </div>
     )
-  },
-
+  }
 });
 
 ReactDOM.render(
